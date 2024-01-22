@@ -12,7 +12,7 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { AppRoleCreateNestedManyWithoutGrantsInput } from "./AppRoleCreateNestedManyWithoutGrantsInput";
-import { ValidateNested, IsOptional } from "class-validator";
+import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -28,6 +28,14 @@ class GrantCreateInput {
     nullable: true,
   })
   appRole?: AppRoleCreateNestedManyWithoutGrantsInput;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  name!: string;
 }
 
 export { GrantCreateInput as GrantCreateInput };

@@ -13,6 +13,7 @@ export const GrantShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>

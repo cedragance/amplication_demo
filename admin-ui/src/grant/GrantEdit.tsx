@@ -1,11 +1,14 @@
 import * as React from "react";
+
 import {
   Edit,
   SimpleForm,
   EditProps,
   ReferenceArrayInput,
   SelectArrayInput,
+  TextInput,
 } from "react-admin";
+
 import { AppRoleTitle } from "../appRole/AppRoleTitle";
 
 export const GrantEdit = (props: EditProps): React.ReactElement => {
@@ -20,6 +23,7 @@ export const GrantEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={AppRoleTitle} />
         </ReferenceArrayInput>
+        <TextInput label="Name" source="name" />
       </SimpleForm>
     </Edit>
   );
