@@ -1,9 +1,9 @@
-// import qs from "qs";
-// import { createUrl, get, patch, post } from "./http";
+import qs from "qs";
+import { createUrl, get, patch, post } from "./http";
 
-import { gql, client } from "./apollo";
+// import { gql, client } from "./apollo";
 
-/*
+
 export const create = async (text, uid) => {
   const result = (
     await post(createUrl("/api/tasks"), {
@@ -49,11 +49,12 @@ export const update = async (task) => {
 
   return result;
 };
-*/
 
+/*
 const CREATE_TASK = gql`
   mutation createTask($data: TaskCreateInput!) {
     createTask(data: $data) {
+      uid
       completed
       createdAt
       id
@@ -71,11 +72,11 @@ export const create = async (text, uid) => {
           data: {
             completed: false,
             text,
-            uid: { id: uid },
+            uid,
           },
         },
       })
-      .catch(() => null)
+      .catch((error) => console.log(error))
   )?.data.createTask;
 
   if (!result) {
@@ -88,6 +89,7 @@ export const create = async (text, uid) => {
 const GET_TASKS = gql`
   query tasks($where: TaskWhereInput, $orderBy: [TaskOrderByInput!]) {
     tasks(where: $where, orderBy: $orderBy) {
+      uid
       completed
       createdAt
       id
@@ -102,11 +104,11 @@ export const getAll = async (uid) => {
       .query({
         query: GET_TASKS,
         variables: {
-          where: { uid: { id: uid } },
+          where: { uid: uid },
           orderBy: { createdAt: "Asc" },
         },
       })
-      .catch(() => null)
+      .catch((error) => console.log(error))
   )?.data.tasks;
 
   if (!result) {
@@ -120,6 +122,7 @@ export const getAll = async (uid) => {
 const UPDATE_TASK = gql`
   mutation updateTask($data: TaskUpdateInput!, $where: TaskWhereUniqueInput!) {
     updateTask(data: $data, where: $where) {
+      uid
       completed
       createdAt
       id
@@ -151,3 +154,4 @@ export const update = async (task) => {
 
   return result;
 };
+*/
