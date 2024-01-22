@@ -12,7 +12,8 @@
     "web-vitals": "^2.1.4",
     "axios" : "^1.6.5",
     "qs": "^6.11.2",
-    "@types/qs": "^6.9.11"
+    "@types/qs": "^6.9.11",
+    "@apollo/client": "^3.8.10"
   },
   "scripts": {
     "start": "react-scripts start",
