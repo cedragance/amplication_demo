@@ -189,19 +189,19 @@ export class GrantControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/appRole")
+  @common.Get("/:id/appRoles")
   @ApiNestedQuery(AppRoleFindManyArgs)
   @nestAccessControl.UseRoles({
     resource: "AppRole",
     action: "read",
     possession: "any",
   })
-  async findAppRole(
+  async findAppRoles(
     @common.Req() request: Request,
     @common.Param() params: GrantWhereUniqueInput
   ): Promise<AppRole[]> {
     const query = plainToClass(AppRoleFindManyArgs, request.query);
-    const results = await this.service.findAppRole(params.id, {
+    const results = await this.service.findAppRoles(params.id, {
       ...query,
       select: {
         createdAt: true,
@@ -218,18 +218,18 @@ export class GrantControllerBase {
     return results;
   }
 
-  @common.Post("/:id/appRole")
+  @common.Post("/:id/appRoles")
   @nestAccessControl.UseRoles({
     resource: "Grant",
     action: "update",
     possession: "any",
   })
-  async connectAppRole(
+  async connectAppRoles(
     @common.Param() params: GrantWhereUniqueInput,
     @common.Body() body: AppRoleWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      appRole: {
+      appRoles: {
         connect: body,
       },
     };
@@ -240,18 +240,18 @@ export class GrantControllerBase {
     });
   }
 
-  @common.Patch("/:id/appRole")
+  @common.Patch("/:id/appRoles")
   @nestAccessControl.UseRoles({
     resource: "Grant",
     action: "update",
     possession: "any",
   })
-  async updateAppRole(
+  async updateAppRoles(
     @common.Param() params: GrantWhereUniqueInput,
     @common.Body() body: AppRoleWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      appRole: {
+      appRoles: {
         set: body,
       },
     };
@@ -262,18 +262,18 @@ export class GrantControllerBase {
     });
   }
 
-  @common.Delete("/:id/appRole")
+  @common.Delete("/:id/appRoles")
   @nestAccessControl.UseRoles({
     resource: "Grant",
     action: "update",
     possession: "any",
   })
-  async disconnectAppRole(
+  async disconnectAppRoles(
     @common.Param() params: GrantWhereUniqueInput,
     @common.Body() body: AppRoleWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      appRole: {
+      appRoles: {
         disconnect: body,
       },
     };

@@ -38,7 +38,7 @@ model AppRole {
 }
 
 model Grant {
-  appRole   AppRole[]
+  appRoles  AppRole[]
   createdAt DateTime  @default(now())
   id        String    @id @default(cuid())
   name      String

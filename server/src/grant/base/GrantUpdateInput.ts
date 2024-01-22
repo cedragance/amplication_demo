@@ -27,7 +27,7 @@ class GrantUpdateInput {
   @Field(() => AppRoleUpdateManyWithoutGrantsInput, {
     nullable: true,
   })
-  appRole?: AppRoleUpdateManyWithoutGrantsInput;
+  appRoles?: AppRoleUpdateManyWithoutGrantsInput;
 
   @ApiProperty({
     required: false,

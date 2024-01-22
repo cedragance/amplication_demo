@@ -24,7 +24,7 @@ class Grant {
   @ValidateNested()
   @Type(() => AppRole)
   @IsOptional()
-  appRole?: Array<AppRole>;
+  appRoles?: Array<AppRole>;
 
   @ApiProperty({
     required: true,
