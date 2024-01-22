@@ -211,6 +211,7 @@ export class AppRoleControllerBase {
       select: {
         createdAt: true,
         id: true,
+        name: true,
         updatedAt: true,
       },
     });

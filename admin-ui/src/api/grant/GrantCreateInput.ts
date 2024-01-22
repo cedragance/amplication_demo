@@ -2,4 +2,5 @@ import { AppRoleCreateNestedManyWithoutGrantsInput } from "./AppRoleCreateNested
 
 export type GrantCreateInput = {
   appRole?: AppRoleCreateNestedManyWithoutGrantsInput;
+  name: string;
 };
