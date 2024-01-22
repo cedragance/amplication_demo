@@ -1,6 +1,6 @@
 import { AppRoleUpdateManyWithoutGrantsInput } from "./AppRoleUpdateManyWithoutGrantsInput";
 
 export type GrantUpdateInput = {
-  appRole?: AppRoleUpdateManyWithoutGrantsInput;
+  appRoles?: AppRoleUpdateManyWithoutGrantsInput;
   name?: string;
 };

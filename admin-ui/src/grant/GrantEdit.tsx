@@ -16,7 +16,7 @@ export const GrantEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <ReferenceArrayInput
-          source="appRole"
+          source="appRoles"
           reference="AppRole"
           parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
           format={(value: any) => value && value.map((v: any) => v.id)}

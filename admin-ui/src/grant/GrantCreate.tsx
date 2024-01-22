@@ -16,7 +16,7 @@ export const GrantCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <ReferenceArrayInput
-          source="appRole"
+          source="appRoles"
           reference="AppRole"
           parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
           format={(value: any) => value && value.map((v: any) => v.id)}

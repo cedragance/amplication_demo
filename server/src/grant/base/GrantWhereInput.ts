@@ -28,7 +28,7 @@ class GrantWhereInput {
   @Field(() => AppRoleListRelationFilter, {
     nullable: true,
   })
-  appRole?: AppRoleListRelationFilter;
+  appRoles?: AppRoleListRelationFilter;
 
   @ApiProperty({
     required: false,

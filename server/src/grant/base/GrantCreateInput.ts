@@ -27,7 +27,7 @@ class GrantCreateInput {
   @Field(() => AppRoleCreateNestedManyWithoutGrantsInput, {
     nullable: true,
   })
-  appRole?: AppRoleCreateNestedManyWithoutGrantsInput;
+  appRoles?: AppRoleCreateNestedManyWithoutGrantsInput;
 
   @ApiProperty({
     required: true,

@@ -52,7 +52,7 @@ export class GrantServiceBase {
     return this.prisma.grant.delete(args);
   }
 
-  async findAppRole(
+  async findAppRoles(
     parentId: string,
     args: Prisma.AppRoleFindManyArgs
   ): Promise<AppRole[]> {
@@ -60,6 +60,6 @@ export class GrantServiceBase {
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .appRole(args);
+      .appRoles(args);
   }
 }

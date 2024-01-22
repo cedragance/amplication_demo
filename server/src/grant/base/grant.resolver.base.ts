@@ -141,17 +141,17 @@ export class GrantResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [AppRole], { name: "appRole" })
+  @graphql.ResolveField(() => [AppRole], { name: "appRoles" })
   @nestAccessControl.UseRoles({
     resource: "AppRole",
     action: "read",
     possession: "any",
   })
-  async findAppRole(
+  async findAppRoles(
     @graphql.Parent() parent: Grant,
     @graphql.Args() args: AppRoleFindManyArgs
   ): Promise<AppRole[]> {
-    const results = await this.service.findAppRole(parent.id, args);
+    const results = await this.service.findAppRoles(parent.id, args);
 
     if (!results) {
       return [];
