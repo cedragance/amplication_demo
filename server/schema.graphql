@@ -2,6 +2,71 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AppRole {
+  createdAt: DateTime!
+  grants(orderBy: [GrantOrderByInput!], skip: Float, take: Float, where: GrantWhereInput): [Grant!]!
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input AppRoleCreateInput {
+  grants: GrantCreateNestedManyWithoutAppRolesInput
+  name: String!
+  users: UserCreateNestedManyWithoutAppRolesInput
+}
+
+input AppRoleCreateNestedManyWithoutGrantsInput {
+  connect: [AppRoleWhereUniqueInput!]
+}
+
+input AppRoleCreateNestedManyWithoutUsersInput {
+  connect: [AppRoleWhereUniqueInput!]
+}
+
+input AppRoleListRelationFilter {
+  every: AppRoleWhereInput
+  none: AppRoleWhereInput
+  some: AppRoleWhereInput
+}
+
+input AppRoleOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input AppRoleUpdateInput {
+  grants: GrantUpdateManyWithoutAppRolesInput
+  name: String
+  users: UserUpdateManyWithoutAppRolesInput
+}
+
+input AppRoleUpdateManyWithoutGrantsInput {
+  connect: [AppRoleWhereUniqueInput!]
+  disconnect: [AppRoleWhereUniqueInput!]
+  set: [AppRoleWhereUniqueInput!]
+}
+
+input AppRoleUpdateManyWithoutUsersInput {
+  connect: [AppRoleWhereUniqueInput!]
+  disconnect: [AppRoleWhereUniqueInput!]
+  set: [AppRoleWhereUniqueInput!]
+}
+
+input AppRoleWhereInput {
+  grants: GrantListRelationFilter
+  id: StringFilter
+  name: StringFilter
+  users: UserListRelationFilter
+}
+
+input AppRoleWhereUniqueInput {
+  id: String!
+}
+
 input BooleanFilter {
   equals: Boolean
   not: Boolean
@@ -17,6 +82,57 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Grant {
+  appRole(orderBy: [AppRoleOrderByInput!], skip: Float, take: Float, where: AppRoleWhereInput): [AppRole!]!
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+}
+
+input GrantCreateInput {
+  appRole: AppRoleCreateNestedManyWithoutGrantsInput
+  name: String!
+}
+
+input GrantCreateNestedManyWithoutAppRolesInput {
+  connect: [GrantWhereUniqueInput!]
+}
+
+input GrantListRelationFilter {
+  every: GrantWhereInput
+  none: GrantWhereInput
+  some: GrantWhereInput
+}
+
+input GrantOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input GrantUpdateInput {
+  appRole: AppRoleUpdateManyWithoutGrantsInput
+  name: String
+}
+
+input GrantUpdateManyWithoutAppRolesInput {
+  connect: [GrantWhereUniqueInput!]
+  disconnect: [GrantWhereUniqueInput!]
+  set: [GrantWhereUniqueInput!]
+}
+
+input GrantWhereInput {
+  appRole: AppRoleListRelationFilter
+  id: StringFilter
+  name: StringFilter
+}
+
+input GrantWhereUniqueInput {
+  id: String!
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -27,19 +143,31 @@ type MetaQueryPayload {
 }
 
 type Mutation {
+  createAppRole(data: AppRoleCreateInput!): AppRole!
+  createGrant(data: GrantCreateInput!): Grant!
   createTask(data: TaskCreateInput!): Task!
   createUser(data: UserCreateInput!): User!
+  deleteAppRole(where: AppRoleWhereUniqueInput!): AppRole!
+  deleteGrant(where: GrantWhereUniqueInput!): Grant!
   deleteTask(where: TaskWhereUniqueInput!): Task!
   deleteUser(where: UserWhereUniqueInput!): User!
   login(credentials: Credentials!): UserInfo!
   signup(credentials: Credentials!): UserInfo!
+  updateAppRole(data: AppRoleUpdateInput!, where: AppRoleWhereUniqueInput!): AppRole!
+  updateGrant(data: GrantUpdateInput!, where: GrantWhereUniqueInput!): Grant!
   updateTask(data: TaskUpdateInput!, where: TaskWhereUniqueInput!): Task!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
 type Query {
+  _appRolesMeta(where: AppRoleWhereInput): MetaQueryPayload!
+  _grantsMeta(where: GrantWhereInput): MetaQueryPayload!
   _tasksMeta(where: TaskWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  appRole(where: AppRoleWhereUniqueInput!): AppRole
+  appRoles(orderBy: [AppRoleOrderByInput!], skip: Float, take: Float, where: AppRoleWhereInput): [AppRole!]!
+  grant(where: GrantWhereUniqueInput!): Grant
+  grants(orderBy: [GrantOrderByInput!], skip: Float, take: Float, where: GrantWhereInput): [Grant!]!
   me: User!
   task(where: TaskWhereUniqueInput!): Task
   tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
@@ -130,6 +258,7 @@ input TaskWhereUniqueInput {
 }
 
 type User {
+  appRoles(orderBy: [AppRoleOrderByInput!], skip: Float, take: Float, where: AppRoleWhereInput): [AppRole!]!
   createdAt: DateTime!
   firstName: String
   id: String!
@@ -140,6 +269,7 @@ type User {
 }
 
 input UserCreateInput {
+  appRoles: AppRoleCreateNestedManyWithoutUsersInput
   firstName: String
   lastName: String
   password: String!
@@ -147,11 +277,21 @@ input UserCreateInput {
   username: String!
 }
 
+input UserCreateNestedManyWithoutAppRolesInput {
+  connect: [UserWhereUniqueInput!]
+}
+
 type UserInfo {
   accessToken: String
   id: String!
   roles: [String!]!
   username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
 }
 
 input UserOrderByInput {
@@ -166,6 +306,7 @@ input UserOrderByInput {
 }
 
 input UserUpdateInput {
+  appRoles: AppRoleUpdateManyWithoutUsersInput
   firstName: String
   lastName: String
   password: String
@@ -173,7 +314,14 @@ input UserUpdateInput {
   username: String
 }
 
+input UserUpdateManyWithoutAppRolesInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
 input UserWhereInput {
+  appRoles: AppRoleListRelationFilter
   firstName: StringNullableFilter
   id: StringFilter
   lastName: StringNullableFilter
