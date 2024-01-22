@@ -82,5 +82,107 @@
     "resource": "Task",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "AppRole",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "AppRole",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "AppRole",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "AppRole",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "AppRole",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "AppRole",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "AppRole",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Grant",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "Grant",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Grant",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "Grant",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Grant",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "Grant",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Grant",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "Grant",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Grant",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "todoUser",
+    "resource": "Grant",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]
