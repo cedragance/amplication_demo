@@ -26,6 +26,7 @@ export class TaskServiceBase {
   ): Promise<Task[]> {
     return this.prisma.task.findMany(args);
   }
+  
   async task<T extends Prisma.TaskFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.TaskFindUniqueArgs>
   ): Promise<Task | null> {
