@@ -8,14 +8,15 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
+  appRoles  AppRole[]
+  createdAt DateTime  @default(now())
   firstName String?
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   lastName  String?
   password  String
   roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  updatedAt DateTime  @updatedAt
+  username  String    @unique
 }
 
 model Task {
@@ -25,4 +26,20 @@ model Task {
   text      String
   uid       String?
   updatedAt DateTime @updatedAt
+}
+
+model AppRole {
+  createdAt DateTime @default(now())
+  grants    Grant[]
+  id        String   @id @default(cuid())
+  name      String
+  updatedAt DateTime @updatedAt
+  users     User[]
+}
+
+model Grant {
+  appRole   AppRole[]
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  updatedAt DateTime  @updatedAt
 }

@@ -13,6 +13,14 @@ import { TaskList } from "./task/TaskList";
 import { TaskCreate } from "./task/TaskCreate";
 import { TaskEdit } from "./task/TaskEdit";
 import { TaskShow } from "./task/TaskShow";
+import { AppRoleList } from "./appRole/AppRoleList";
+import { AppRoleCreate } from "./appRole/AppRoleCreate";
+import { AppRoleEdit } from "./appRole/AppRoleEdit";
+import { AppRoleShow } from "./appRole/AppRoleShow";
+import { GrantList } from "./grant/GrantList";
+import { GrantCreate } from "./grant/GrantCreate";
+import { GrantEdit } from "./grant/GrantEdit";
+import { GrantShow } from "./grant/GrantShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -52,6 +60,20 @@ const App = (): React.ReactElement => {
           edit={TaskEdit}
           create={TaskCreate}
           show={TaskShow}
+        />
+        <Resource
+          name="AppRole"
+          list={AppRoleList}
+          edit={AppRoleEdit}
+          create={AppRoleCreate}
+          show={AppRoleShow}
+        />
+        <Resource
+          name="Grant"
+          list={GrantList}
+          edit={GrantEdit}
+          create={GrantCreate}
+          show={GrantShow}
         />
       </Admin>
     </div>

@@ -26,6 +26,8 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
+import { AppRoleFindManyArgs } from "../../appRole/base/AppRoleFindManyArgs";
+import { AppRole } from "../../appRole/base/AppRole";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)
@@ -130,5 +132,25 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [AppRole], { name: "appRoles" })
+  @nestAccessControl.UseRoles({
+    resource: "AppRole",
+    action: "read",
+    possession: "any",
+  })
+  async findAppRoles(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: AppRoleFindManyArgs
+  ): Promise<AppRole[]> {
+    const results = await this.service.findAppRoles(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }
