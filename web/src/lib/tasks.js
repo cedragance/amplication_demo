@@ -1,5 +1,5 @@
-import qs from "qs";
-import { createUrl, get, patch, post } from "./http";
+// import qs from "qs";
+// import { createUrl, get, patch, post } from "./http";
 
 import { gql, client } from "./apollo";
 
