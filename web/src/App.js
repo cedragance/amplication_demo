@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+
+import { me } from "./lib/auth";
+
+import Auth from "./Auth";
+import CreateTask from "./CreateTask";
+import Tasks from "./Tasks";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [user, setUser] = useState();
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    async function getUser() {
+      const result = await me();
+      setUser(result);
+    }
+    getUser();
+  }, [setUser]);
+
+  const createTask = (text, id) => ({
+    id,
+    text,
+    completed: false,
+  });
+
+  const addTask = (task) => {
+    const temp = [...tasks];
+    temp.push(createTask(task, tasks.length));
+    setTasks(temp);
+  };
+
+  const toggleCompleted = (id) => {
+    let temp = [...tasks];
+    const i = temp.findIndex((t) => t.id === id);
+    temp[i].completed = !temp[i].completed;
+    setTasks(temp);
+  };
+
+return (
+    <div>
+      {user ? (
+        <div>
+          <CreateTask addTask={addTask} />
+          <Tasks tasks={tasks} toggleCompleted={toggleCompleted} />
+        </div>
+      ) : (
+        <Auth setUser={setUser} />
+      )}
     </div>
   );
+
 }
 
 export default App;
