@@ -83,7 +83,7 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Grant {
-  appRole(orderBy: [AppRoleOrderByInput!], skip: Float, take: Float, where: AppRoleWhereInput): [AppRole!]!
+  appRoles(orderBy: [AppRoleOrderByInput!], skip: Float, take: Float, where: AppRoleWhereInput): [AppRole!]!
   createdAt: DateTime!
   id: String!
   name: String!
@@ -91,7 +91,7 @@ type Grant {
 }
 
 input GrantCreateInput {
-  appRole: AppRoleCreateNestedManyWithoutGrantsInput
+  appRoles: AppRoleCreateNestedManyWithoutGrantsInput
   name: String!
 }
 
@@ -113,7 +113,7 @@ input GrantOrderByInput {
 }
 
 input GrantUpdateInput {
-  appRole: AppRoleUpdateManyWithoutGrantsInput
+  appRoles: AppRoleUpdateManyWithoutGrantsInput
   name: String
 }
 
@@ -124,7 +124,7 @@ input GrantUpdateManyWithoutAppRolesInput {
 }
 
 input GrantWhereInput {
-  appRole: AppRoleListRelationFilter
+  appRoles: AppRoleListRelationFilter
   id: StringFilter
   name: StringFilter
 }

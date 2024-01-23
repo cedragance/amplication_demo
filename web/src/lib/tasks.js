@@ -1,9 +1,9 @@
-import qs from "qs";
-import { createUrl, get, patch, post } from "./http";
+// import qs from "qs";
+// import { createUrl, get, patch, post } from "./http";
 
-// import { gql, client } from "./apollo";
+import { gql, client } from "./apollo";
 
-
+/*
 export const create = async (text, uid) => {
   const result = (
     await post(createUrl("/api/tasks"), {
@@ -49,8 +49,8 @@ export const update = async (task) => {
 
   return result;
 };
+*/
 
-/*
 const CREATE_TASK = gql`
   mutation createTask($data: TaskCreateInput!) {
     createTask(data: $data) {
@@ -104,7 +104,7 @@ export const getAll = async (uid) => {
       .query({
         query: GET_TASKS,
         variables: {
-          where: { uid: uid },
+          where: { uid: { in: [uid] } },
           orderBy: { createdAt: "Asc" },
         },
       })
@@ -154,4 +154,4 @@ export const update = async (task) => {
 
   return result;
 };
-*/
+
