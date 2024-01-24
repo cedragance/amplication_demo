@@ -73,6 +73,13 @@ input[type="checkbox"] {
   width: 48px;
 }
 
+.delete-input {
+  height: 48px;
+  margin: var(--spacing);
+  width: 48px;
+  color: red;
+}
+
 li {
   display: flex;
   height: calc(48px + calc(2 * var(--spacing)));

@@ -45,12 +45,25 @@ function App() {
     setTasks(temp);
   };
 
+  const deleteTask = async (task) => {
+    const deletedTask = await tasksLib.deleteTask(task);
+    if (!deletedTask) return;
+    let temp = [...tasks];
+    const i = temp.findIndex((t) => t.id === deletedTask.id);
+    temp.splice(i, 1);
+    setTasks(temp);
+  };
+
   return (
     <div>
       {user ? (
         <div>
           <CreateTask addTask={addTask} />
-          <Tasks tasks={tasks} toggleCompleted={toggleCompleted} />
+          <Tasks
+            tasks={tasks}
+            toggleCompleted={toggleCompleted}
+            deleteTask={deleteTask}
+          />
         </div>
       ) : (
          <Auth setUser={setUserFetchTasks} />

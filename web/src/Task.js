@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-export default function Task({ task, toggleCompleted }) {
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export default function Task({ task, toggleCompleted, deleteTask }) {
   const [completed, setCompleted] = useState(task.completed);
 
   return (
@@ -13,6 +16,11 @@ export default function Task({ task, toggleCompleted }) {
         onChange={() => setCompleted(!task.completed)}
         readOnly
       />
-    </li>
+      <FontAwesomeIcon
+        icon={faTimes}
+        className="delete-input"
+        onClick={() => deleteTask(task)}
+      />
+      </li>
   );
 }

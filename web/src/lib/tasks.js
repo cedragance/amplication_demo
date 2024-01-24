@@ -151,7 +151,7 @@ export const update = async (task) => {
           },
         },
       })
-      .catch(() => null)
+      .catch((error) => console.log(error))
   )?.data.updateTask;
 
   if (!result) {
@@ -161,3 +161,35 @@ export const update = async (task) => {
   return result;
 };
 
+const DELETE_TASK = gql`
+  mutation deleteTask($where: TaskWhereUniqueInput!) {
+    deleteTask(where: $where) {
+      uid
+      completed
+      createdAt
+      id
+      text
+    }
+  }
+`;
+
+export const deleteTask = async (task) => {
+  const result = (
+    await client
+      .mutate({
+        mutation: DELETE_TASK,
+        variables: {
+          where: {
+            id: task.id,
+          },
+        },
+      })
+      .catch((error) => console.log(error))
+  )?.data.deleteTask;
+
+  if (!result) {
+    return alert("Could not delete task");
+  }
+
+  return result;
+};
