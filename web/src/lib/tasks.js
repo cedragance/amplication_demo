@@ -104,7 +104,7 @@ export const getAllOrderedAndPaged = async (uid, orderBy, skip, take) => {
       .query({
         query: GET_TASKS,
         variables: {
-          where: { uid: { in: [uid] } },
+          where: { { user { id } }: { in: [uid] } },
           orderBy: orderBy,
           skip: skip,
           take: take,

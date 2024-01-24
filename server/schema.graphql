@@ -221,14 +221,24 @@ type Task {
   createdAt: DateTime!
   id: String!
   text: String!
-  uid: String
+  uid: User
   updatedAt: DateTime!
 }
 
 input TaskCreateInput {
   completed: Boolean!
   text: String!
-  uid: String
+  uid: UserWhereUniqueInput
+}
+
+input TaskCreateNestedManyWithoutUsersInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskListRelationFilter {
+  every: TaskWhereInput
+  none: TaskWhereInput
+  some: TaskWhereInput
 }
 
 input TaskOrderByInput {
@@ -236,21 +246,27 @@ input TaskOrderByInput {
   createdAt: SortOrder
   id: SortOrder
   text: SortOrder
-  uid: SortOrder
   updatedAt: SortOrder
+  user_id: SortOrder
 }
 
 input TaskUpdateInput {
   completed: Boolean
   text: String
-  uid: String
+  uid: UserWhereUniqueInput
+}
+
+input TaskUpdateManyWithoutUsersInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+  set: [TaskWhereUniqueInput!]
 }
 
 input TaskWhereInput {
   completed: BooleanFilter
   id: StringFilter
   text: StringFilter
-  uid: StringNullableFilter
+  uid: UserWhereUniqueInput
 }
 
 input TaskWhereUniqueInput {
@@ -264,6 +280,7 @@ type User {
   id: String!
   lastName: String
   roles: JSON!
+  tasks(orderBy: [TaskOrderByInput!], skip: Float, take: Float, where: TaskWhereInput): [Task!]!
   updatedAt: DateTime!
   username: String!
 }
@@ -274,6 +291,7 @@ input UserCreateInput {
   lastName: String
   password: String!
   roles: JSON!
+  tasks: TaskCreateNestedManyWithoutUsersInput
   username: String!
 }
 
@@ -311,6 +329,7 @@ input UserUpdateInput {
   lastName: String
   password: String
   roles: JSON
+  tasks: TaskUpdateManyWithoutUsersInput
   username: String
 }
 
@@ -325,6 +344,7 @@ input UserWhereInput {
   firstName: StringNullableFilter
   id: StringFilter
   lastName: StringNullableFilter
+  tasks: TaskListRelationFilter
   username: StringFilter
 }
 
