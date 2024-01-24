@@ -14,7 +14,8 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   User, // @ts-ignore
-  AppRole,
+  AppRole, // @ts-ignore
+  Task,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -87,5 +88,16 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .appRoles(args);
+  }
+
+  async findTasks(
+    parentId: string,
+    args: Prisma.TaskFindManyArgs
+  ): Promise<Task[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .tasks(args);
   }
 }

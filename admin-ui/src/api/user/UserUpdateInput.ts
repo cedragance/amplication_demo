@@ -1,5 +1,6 @@
 import { AppRoleUpdateManyWithoutUsersInput } from "./AppRoleUpdateManyWithoutUsersInput";
 import { InputJsonValue } from "../../types";
+import { TaskUpdateManyWithoutUsersInput } from "./TaskUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
   appRoles?: AppRoleUpdateManyWithoutUsersInput;
@@ -7,5 +8,6 @@ export type UserUpdateInput = {
   lastName?: string | null;
   password?: string;
   roles?: InputJsonValue;
+  tasks?: TaskUpdateManyWithoutUsersInput;
   username?: string;
 };

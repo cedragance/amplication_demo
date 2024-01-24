@@ -47,13 +47,27 @@ export class TaskControllerBase {
   })
   async createTask(@common.Body() data: TaskCreateInput): Promise<Task> {
     return await this.service.createTask({
-      data: data,
+      data: {
+        ...data,
+
+        uid: data.uid
+          ? {
+              connect: data.uid,
+            }
+          : undefined,
+      },
       select: {
         completed: true,
         createdAt: true,
         id: true,
         text: true,
-        uid: true,
+
+        uid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -80,7 +94,13 @@ export class TaskControllerBase {
         createdAt: true,
         id: true,
         text: true,
-        uid: true,
+
+        uid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -108,7 +128,13 @@ export class TaskControllerBase {
         createdAt: true,
         id: true,
         text: true,
-        uid: true,
+
+        uid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -139,13 +165,27 @@ export class TaskControllerBase {
     try {
       return await this.service.updateTask({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          uid: data.uid
+            ? {
+                connect: data.uid,
+              }
+            : undefined,
+        },
         select: {
           completed: true,
           createdAt: true,
           id: true,
           text: true,
-          uid: true,
+
+          uid: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -181,7 +221,13 @@ export class TaskControllerBase {
           createdAt: true,
           id: true,
           text: true,
-          uid: true,
+
+          uid: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
