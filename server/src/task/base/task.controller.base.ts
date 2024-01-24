@@ -50,9 +50,9 @@ export class TaskControllerBase {
       data: {
         ...data,
 
-        uid: data.uid
+        user: data.user
           ? {
-              connect: data.uid,
+              connect: data.user,
             }
           : undefined,
       },
@@ -61,14 +61,13 @@ export class TaskControllerBase {
         createdAt: true,
         id: true,
         text: true,
+        updatedAt: true,
 
-        uid: {
+        user: {
           select: {
             id: true,
           },
         },
-
-        updatedAt: true,
       },
     });
   }
@@ -94,14 +93,13 @@ export class TaskControllerBase {
         createdAt: true,
         id: true,
         text: true,
+        updatedAt: true,
 
-        uid: {
+        user: {
           select: {
             id: true,
           },
         },
-
-        updatedAt: true,
       },
     });
   }
@@ -128,14 +126,13 @@ export class TaskControllerBase {
         createdAt: true,
         id: true,
         text: true,
+        updatedAt: true,
 
-        uid: {
+        user: {
           select: {
             id: true,
           },
         },
-
-        updatedAt: true,
       },
     });
     if (result === null) {
@@ -168,9 +165,9 @@ export class TaskControllerBase {
         data: {
           ...data,
 
-          uid: data.uid
+          user: data.user
             ? {
-                connect: data.uid,
+                connect: data.user,
               }
             : undefined,
         },
@@ -179,14 +176,13 @@ export class TaskControllerBase {
           createdAt: true,
           id: true,
           text: true,
+          updatedAt: true,
 
-          uid: {
+          user: {
             select: {
               id: true,
             },
           },
-
-          updatedAt: true,
         },
       });
     } catch (error) {
@@ -221,14 +217,13 @@ export class TaskControllerBase {
           createdAt: true,
           id: true,
           text: true,
+          updatedAt: true,
 
-          uid: {
+          user: {
             select: {
               id: true,
             },
           },
-
-          updatedAt: true,
         },
       });
     } catch (error) {

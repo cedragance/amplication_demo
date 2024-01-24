@@ -48,7 +48,7 @@ class TaskCreateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  uid?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { TaskCreateInput as TaskCreateInput };

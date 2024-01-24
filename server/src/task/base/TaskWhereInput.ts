@@ -62,7 +62,7 @@ class TaskWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  uid?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { TaskWhereInput as TaskWhereInput };

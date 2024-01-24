@@ -18,7 +18,7 @@ export const TaskEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <BooleanInput label="Completed" source="completed" />
         <TextInput label="Text" source="text" />
-        <ReferenceInput source="uid.id" reference="User" label="UID">
+        <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

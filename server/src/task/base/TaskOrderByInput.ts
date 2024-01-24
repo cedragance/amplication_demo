@@ -72,7 +72,7 @@ class TaskOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  user_id?: SortOrder;
+  updatedAt?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -83,7 +83,7 @@ class TaskOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  updatedAt?: SortOrder;
+  user_id?: SortOrder;
 }
 
 export { TaskOrderByInput as TaskOrderByInput };

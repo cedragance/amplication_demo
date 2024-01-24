@@ -5,6 +5,6 @@ export type Task = {
   createdAt: Date;
   id: string;
   text: string;
-  uid?: User | null;
   updatedAt: Date;
+  user?: User | null;
 };

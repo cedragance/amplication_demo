@@ -90,9 +90,9 @@ export class TaskResolverBase {
       data: {
         ...args.data,
 
-        uid: args.data.uid
+        user: args.data.user
           ? {
-              connect: args.data.uid,
+              connect: args.data.user,
             }
           : undefined,
       },
@@ -113,9 +113,9 @@ export class TaskResolverBase {
         data: {
           ...args.data,
 
-          uid: args.data.uid
+          user: args.data.user
             ? {
-                connect: args.data.uid,
+                connect: args.data.user,
               }
             : undefined,
         },
@@ -152,15 +152,15 @@ export class TaskResolverBase {
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "uid",
+    name: "user",
   })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
-  async getUid(@graphql.Parent() parent: Task): Promise<User | null> {
-    const result = await this.service.getUid(parent.id);
+  async getUser(@graphql.Parent() parent: Task): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

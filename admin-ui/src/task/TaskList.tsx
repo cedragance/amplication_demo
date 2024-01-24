@@ -27,10 +27,10 @@ export const TaskList = (props: ListProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="Text" source="text" />
-        <ReferenceField label="UID" source="user.id" reference="User">
+        <DateField source="updatedAt" label="Updated At" />
+        <ReferenceField label="User" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
-        <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>
   );

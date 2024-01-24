@@ -52,11 +52,11 @@ export class TaskServiceBase {
     return this.prisma.task.delete(args);
   }
 
-  async getUid(parentId: string): Promise<User | null> {
+  async getUser(parentId: string): Promise<User | null> {
     return this.prisma.task
       .findUnique({
         where: { id: parentId },
       })
-      .uid();
+      .user();
   }
 }
