@@ -322,14 +322,13 @@ export class UserControllerBase {
         createdAt: true,
         id: true,
         text: true,
+        updatedAt: true,
 
-        uid: {
+        user: {
           select: {
             id: true,
           },
         },
-
-        updatedAt: true,
       },
     });
     if (results === null) {

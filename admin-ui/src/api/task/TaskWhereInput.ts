@@ -6,5 +6,5 @@ export type TaskWhereInput = {
   completed?: BooleanFilter;
   id?: StringFilter;
   text?: StringFilter;
-  uid?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

@@ -54,7 +54,7 @@ class TaskUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  uid?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 }
 
 export { TaskUpdateInput as TaskUpdateInput };
