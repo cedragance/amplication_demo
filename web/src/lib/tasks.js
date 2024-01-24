@@ -54,10 +54,8 @@ export const update = async (task) => {
 const CREATE_TASK = gql`
   mutation createTask($data: TaskCreateInput!) {
     createTask(data: $data) {
-      uid
+      user { id }
       completed
-      createdAt
-      id
       text
     }
   }
@@ -70,9 +68,9 @@ export const create = async (text, uid) => {
         mutation: CREATE_TASK,
         variables: {
           data: {
+			user: { id: uid },
             completed: false,
             text,
-            uid,
           },
         },
       })
@@ -89,11 +87,11 @@ export const create = async (text, uid) => {
 const GET_TASKS = gql`
   query tasks($where: TaskWhereInput, $orderBy: [TaskOrderByInput!], $skip: Float, $take: Float) {
     tasks(where: $where, orderBy: $orderBy, skip: $skip, take: $take) {
-      uid
       completed
       createdAt
       id
       text
+      user { id }
     }
   }
 `;
@@ -104,10 +102,10 @@ export const getAllOrderedAndPaged = async (uid, orderBy, skip, take) => {
       .query({
         query: GET_TASKS,
         variables: {
-          where: { { user { id } }: { in: [uid] } },
+          where: { user: { id: uid } },
           orderBy: orderBy,
           skip: skip,
-          take: take,
+          take: take
         },
       })
       .catch((error) => console.log(error))
@@ -128,11 +126,10 @@ export const getAll = async (uid) => {
 const UPDATE_TASK = gql`
   mutation updateTask($data: TaskUpdateInput!, $where: TaskWhereUniqueInput!) {
     updateTask(data: $data, where: $where) {
-      uid
       completed
-      createdAt
-      id
       text
+      id
+      user { id }
     }
   }
 `;
@@ -145,6 +142,8 @@ export const update = async (task) => {
         variables: {
           data: {
             completed: !task.completed,
+            text: task.text,
+            user: { id: task.user.id },
           },
           where: {
             id: task.id,
@@ -164,11 +163,7 @@ export const update = async (task) => {
 const DELETE_TASK = gql`
   mutation deleteTask($where: TaskWhereUniqueInput!) {
     deleteTask(where: $where) {
-      uid
-      completed
-      createdAt
       id
-      text
     }
   }
 `;

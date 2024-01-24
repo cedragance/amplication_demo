@@ -221,14 +221,14 @@ type Task {
   createdAt: DateTime!
   id: String!
   text: String!
-  uid: User
   updatedAt: DateTime!
+  user: User
 }
 
 input TaskCreateInput {
   completed: Boolean!
   text: String!
-  uid: UserWhereUniqueInput
+  user: UserWhereUniqueInput
 }
 
 input TaskCreateNestedManyWithoutUsersInput {
@@ -253,7 +253,7 @@ input TaskOrderByInput {
 input TaskUpdateInput {
   completed: Boolean
   text: String
-  uid: UserWhereUniqueInput
+  user: UserWhereUniqueInput
 }
 
 input TaskUpdateManyWithoutUsersInput {
@@ -266,7 +266,7 @@ input TaskWhereInput {
   completed: BooleanFilter
   id: StringFilter
   text: StringFilter
-  uid: UserWhereUniqueInput
+  user: UserWhereUniqueInput
 }
 
 input TaskWhereUniqueInput {
