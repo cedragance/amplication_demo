@@ -72,7 +72,7 @@ class TaskOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  fk_task_user?: SortOrder;
+  user_id?: SortOrder;
 
   @ApiProperty({
     required: false,
