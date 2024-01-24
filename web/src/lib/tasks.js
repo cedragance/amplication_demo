@@ -87,8 +87,8 @@ export const create = async (text, uid) => {
 };
 
 const GET_TASKS = gql`
-  query tasks($where: TaskWhereInput, $orderBy: [TaskOrderByInput!]) {
-    tasks(where: $where, orderBy: $orderBy) {
+  query tasks($where: TaskWhereInput, $orderBy: [TaskOrderByInput!], $skip: Float, $take: Float) {
+    tasks(where: $where, orderBy: $orderBy, skip: $skip, take: $take) {
       uid
       completed
       createdAt
@@ -98,14 +98,16 @@ const GET_TASKS = gql`
   }
 `;
 
-export const getAll = async (uid) => {
+export const getAllOrderedAndPaged = async (uid, orderBy, skip, take) => {
   const result = (
     await client
       .query({
         query: GET_TASKS,
         variables: {
           where: { uid: { in: [uid] } },
-          orderBy: { createdAt: "Asc" },
+          orderBy: orderBy,
+          skip: skip,
+          take: take,
         },
       })
       .catch((error) => console.log(error))
@@ -117,6 +119,10 @@ export const getAll = async (uid) => {
   }
 
   return result;
+};
+
+export const getAll = async (uid) => {
+  return getAllOrderedAndPaged(uid, {}, 2, 5);
 };
 
 const UPDATE_TASK = gql`
