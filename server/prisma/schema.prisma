@@ -21,13 +21,13 @@ model User {
 }
 
 model Task {
-  completed    Boolean
-  createdAt    DateTime @default(now())
-  id           String   @id @default(cuid())
-  text         String   @db.VarChar(255)
-  uid          User?    @relation(fields: [fk_task_user], references: [id])
-  fk_task_user String?
-  updatedAt    DateTime @updatedAt
+  completed Boolean
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  text      String   @db.VarChar(255)
+  uid       User?    @relation(fields: [user_id], references: [id])
+  user_id   String?
+  updatedAt DateTime @updatedAt
 }
 
 model AppRole {
