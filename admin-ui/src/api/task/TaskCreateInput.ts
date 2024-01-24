@@ -1,5 +1,7 @@
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+
 export type TaskCreateInput = {
   completed: boolean;
   text: string;
-  uid?: string | null;
+  uid?: UserWhereUniqueInput | null;
 };

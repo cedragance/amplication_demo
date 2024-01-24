@@ -1,5 +1,6 @@
 import { AppRole } from "../appRole/AppRole";
 import { JsonValue } from "type-fest";
+import { Task } from "../task/Task";
 
 export type User = {
   appRoles?: Array<AppRole>;
@@ -8,6 +9,7 @@ export type User = {
   id: string;
   lastName: string | null;
   roles: JsonValue;
+  tasks?: Array<Task>;
   updatedAt: Date;
   username: string;
 };
