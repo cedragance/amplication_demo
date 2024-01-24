@@ -54,6 +54,7 @@ export const update = async (task) => {
 const CREATE_TASK = gql`
   mutation createTask($data: TaskCreateInput!) {
     createTask(data: $data) {
+      id
       user { id }
       completed
       text
