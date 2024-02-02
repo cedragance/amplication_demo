@@ -14,6 +14,8 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsOptional, IsEnum } from "class-validator";
 import { SortOrder } from "../../util/SortOrder";
 
+import { UserOrderByInput } from "../../user/base/UserOrderByInput";
+
 @InputType({
   isAbstract: true,
   description: undefined,
@@ -83,7 +85,7 @@ class TaskOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  user_id?: SortOrder;
+  user?: UserOrderByInput;
 }
 
 export { TaskOrderByInput as TaskOrderByInput };
